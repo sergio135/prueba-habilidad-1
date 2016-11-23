@@ -1,0 +1,53 @@
+header {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+main {
+    padding: 100px 0;
+    display: block;
+    position: absolute;
+    top: 100px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    background-image: url(../img/fondo.jpg);
+}
+
+footer {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+}
+
+
+
+main .form-area {
+    border: 25px solid #2e2e2e;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+main .form-area form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+main .form-area .form-box{
+    width: 50%;
+}

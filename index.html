@@ -11,7 +11,8 @@
 	<title>Pasarela de Pago</title>
   
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="./css/animate.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
+	<link href="./css/animate.css" rel="stylesheet">
 	<link href="./css/style.css" rel="stylesheet">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -33,7 +34,7 @@
   <header>
   	<div class="container">
     	<div class="col-xs-3 text-center">
-    	  <img class="animated zoomInUp logo-header" src="./img/SG-logo.png" alt="Logo Sergio Garcia">
+    	  <img class="animated bounceIn logo-header" src="./img/SG-logo.png" alt="Logo Sergio Garcia">
     	</div>
     	<div class="col-xs-9 text-center">
     	  <h1 class="animated bounceInLeft">Formulario con metodos de Pago</h1>
@@ -41,34 +42,59 @@
     </div>
   </header>
   <main class="animated fadeIn">
+		<div class="animation-area">
+			<img id="avion1" src="./img/avion-iz.png">
+			<img id="avion2" src="./img/avion-iz.png">
+			<img id="avion3" src="./img/avion-iz.png">
+			<img id="avion4" src="./img/avion-de.png">
+			<img id="avion5" src="./img/avion-de.png">
+			<img id="avion6" src="./img/avion-de.png">
+		</div>
     <div class="container">
 			<div class="animated fadeInUp form-area">
+				<div class="form-header">Rellena el precio deseado del vuelo, y seleciona metodo de pago</div>
     	  <form>
     	  	<div class="form-box-iz">
 						<h3>Precio del vuelo</h3>
-    	    	<input id="price-input" type="number" placeholder="Precio">
+						<div class="input-group nput-group-lg">
+    	    		<input id="price-input" class="form-control" type="number" placeholder="Precio">
+							<span class="input-group-addon">€</span>
+						</div>
     	    </div>
     	    <div class="form-box-de">
     	    	<h3>Metodos de pago</h3>
-    	    	<label for="">Efectivo</label>
-    	    	<input id="Efectivo" type="radio" name="MethodPay" value="Efectivo">
-    	    	<label for="">Paypal</label>
-    	    	<input id="Paypal" type="radio" name="MethodPay" value="Paypal">
-    	    	<label for="">Tarjeta</label>
-    	    	<input id="Tarjeta" type="radio" name="MethodPay" value="Tarjeta">
-						<select id="cardTipe">
+						<div class="input-group">
+							<span class="input-group-addon">Efectivo</span>
+							<span class="input-group-addon">
+    	    			<input id="Efectivo" type="radio" name="MethodPay" value="Efectivo">
+							</span>
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon">Paypal</span>
+							<span class="input-group-addon">
+    	    			<input id="Paypal" type="radio" name="MethodPay" value="Paypal">
+							</span>
+						</div>
+    	    	<div class="input-group" style="float: left;">
+							<span class="input-group-addon">Tarjeta</span>
+							<span class="input-group-addon">
+    	    			<input id="Tarjeta" type="radio" name="MethodPay" value="Tarjeta">
+							</span>
+						</div>
+						<select id="cardTipe" class="form-control">
 							<option value="">Selecciona Tipo...</option>
   						<option value="visa">Visa</option>
   						<option value="mastercard">Master Card</option>
   						<option value="american">American Express</option>
-						</select>
-						<div>
-							<button type="button" name="btn-test" value="isSelected">isSelected</button>
-							<button type="button" name="btn-test" value="getTotalFee">getTotalFee</button>
-							<button type="button" name="btn-test" value="getTotalFeeWithoudDiscounts">getTotalFeeWithoudDiscounts</button>
-						</div>
+						</select>	
+					</div>
+					<div class="form-box-bottom">
+							<button class="btn btn-primary" type="button" name="btn-test" value="isSelected">isSelected</button>
+							<button class="btn btn-primary" type="button" name="btn-test" value="getTotalFee">getTotalFee</button>
+							<button class="btn btn-primary" type="button" name="btn-test" value="getTotalFeeWithoudDiscounts">getTotalFeeWithoudDiscounts</button>
 					</div>
     	  </form>
+				<div class="form-footer">Finalizar tu compra!</div>
     	</div>
     </div>
   </main>

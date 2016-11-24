@@ -1,3 +1,7 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 header {
     display: block;
     position: absolute;
@@ -48,47 +52,188 @@ footer {
 }
 header .logo-header {
     height: 60px;
-    animation-duration: 3s;
     animation-delay: 3.1s;
 }
 header h1 {
     margin: 10px 0;
     animation-delay: 4s;
+    text-transform: uppercase;
 }
 
 
 /*** Parte Principal ***/
 main .form-area {
-    border: 25px solid #2e2e2e;
-    border-radius: 20px;
-    padding: 20px;
+    border: 15px solid #141c27;
+    border-radius: 25px;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: #141c27;
     animation-delay: 4.5s;
+    overflow: hidden;
+}
+main .form-header {
+    background-color: #005A76;
+    text-align: left;
+    font-size: 22px;
+    color: #ffffff;
+    padding: 20px 10px;
+}
+main .form-footer {
+    background-color: #D9534F;
+    text-align: center;
+    font-size: 28px;
+    color: #ffffff;
+    padding: 20px 0;
 }
 main .form-area form {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
+    padding: 20px;
+}
+main .form-area form h3 {
+    margin: 10px 0 30px 0;
+    color: #ffffff;
 }
 main .form-area .form-box-iz {
     width: 30%;
     padding-right: 10px;
 }
+main .form-area .form-box-iz h3:after {
+    content: "";
+    background-color: #ffffff;
+    height: 2px;
+    display: block;
+    width: 170px;
+    margin-top: 10px;
+}
+
+main .form-area .form-box-iz input {
+    font-weight: 700;
+    font-size: 18px;
+}
 main .form-area .form-box-de {
     width: 70%;
     padding-left: 10px;
 }
-main .form-area .form-box-iz input {
-    width: 100%;
+main .form-area .form-box-de h3:after {
+    content: "";
+    background-color: #ffffff;
+    height: 2px;
+    display: block;
+    width: 190px;
+    margin-top: 10px;
+}
+main .form-area .form-box-de .input-group {
+    width: 150px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+main .form-area .form-box-de select {
+    width: 200px;
+}
+main .form-area .form-box-de .input-group-addon {
+    font-size: 18px;
 }
 
+
+main .form-area .form-box-bottom {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
 
 /*** Parte Footer ***/
 footer .logos-rrss img {
     width: 40px;
     margin-left: 20px;
+}
+
+/*** Animaciones ***/
+main .animation-area {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+main .animation-area img {
+    position: absolute;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+main .animation-area img#avion1 {
+    animation-name: avion1;
+    top: -200%;
+    animation-duration: 10s;
+    animation-delay: 5s;
+    width: 150px;
+}
+@keyframes avion1 {
+    0% {right: -100%; top: 20%;}
+    100% {right: 200%; top: 50%;}
+}
+
+main .animation-area img#avion2 {
+    top: -200%;
+    animation-name: avion2;
+    animation-duration: 15s;
+    animation-delay: 10s;
+    width: 100px;
+}
+@keyframes avion2 {
+    0% {right: -100%; top: 80%;}
+    100% {right: 200%; top: 50%;}
+}
+
+main .animation-area img#avion3 {
+    top: -200%;
+    animation-name: avion3;
+    animation-duration: 5s;
+    animation-delay: 26s;
+    width: 200px;
+}
+@keyframes avion3 {
+    0% {right: -100%; top: 45%;}
+    100% {right: 200%; top: 55%;}
+}
+
+main .animation-area img#avion4 {
+    top: -200%;
+    animation-name: avion4;
+    animation-duration: 10s;
+    animation-delay: 17s;
+    width: 150px;
+}
+@keyframes avion4 {
+    0% {left: -100%; top: 30%;}
+    100% {left: 200%; top: 40%;}
+}
+
+main .animation-area img#avion5 {
+    top: -200%;
+    animation-name: avion5;
+    animation-duration: 15s;
+    animation-delay: 30s;
+    width: 100px;
+}
+@keyframes avion5 {
+    0% {left: -100%; top: 20%;}
+    100% {left: 200%; top: 60%;}
+}
+
+main .animation-area img#avion6 {
+    top: -200%;
+    animation-name: avion6;
+    animation-duration: 5s;
+    animation-delay: 34s;
+    width: 200px;
+}
+@keyframes avion6 {
+    0% {left: -100%; top: 80%;}
+    100% {left: 200%; top: 40%;}
 }

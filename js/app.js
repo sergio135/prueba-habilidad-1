@@ -1,7 +1,14 @@
 // Declarar el objeto para que no falle
 var es = { brujula: { paymentMethods: {} } };
-// Ahora definimos la clase que utilizara cada instancia de los objetos creados, para los eventos en el DOM sobre metodos de pago.
+// Genero una funcion para ahorrar trabajo y lineas de codigo mas adelante (metodo initView)
+function setAttributes(el, attrs) {
+    for (var key in attrs) {
+        el.setAttribute(key, attrs[key]);
+    }
+}
+// Ahora definimos la clase que utilizara cada instancia de los objetos creados.
 var PaymentMethod = (function () {
+    // No Se creo la funcion "init" porque typescript ya tiene su propio construcctor.
     function PaymentMethod(paymentMethodId, price, cardType) {
         this.view = {};
         this.discountFee = 10;
@@ -29,6 +36,7 @@ var PaymentMethod = (function () {
         }
     };
     PaymentMethod.prototype.getTotalFee = function () {
+        // Los precios de las tarjetas como no se indico de otra forma, los incluyo aqui, aunque lo mejor fuese cogerlos por el constructor.
         switch (this.paymentMethodId) {
             case "Efectivo": return 1.5 + (this.price - (this.discountFee * this.price / 100));
             case "Paypal": return 8.30 + (this.price - (this.discountFee * this.price / 100));
@@ -53,15 +61,29 @@ var PaymentMethod = (function () {
         }
     };
     PaymentMethod.prototype.initView = function () {
+        var isSelected = document.createElement("button");
+        isSelected.innerHTML = "isSelected";
+        setAttributes(isSelected, { "class": "btn btn-primary", "type": "button", "name": "btn-test", "value": "isSelected" });
+        var getTotalFee = document.createElement("button");
+        getTotalFee.innerHTML = "getTotalFee";
+        setAttributes(getTotalFee, { "class": "btn btn-primary", "type": "button", "name": "btn-test", "value": "getTotalFee" });
+        var getTotalFeeWithoudDiscounts = document.createElement("button");
+        getTotalFeeWithoudDiscounts.innerHTML = "getTotalFeeWithoudDiscounts";
+        setAttributes(getTotalFeeWithoudDiscounts, { "class": "btn btn-primary", "type": "button", "name": "btn-test", "value": "getTotalFeeWithoudDiscounts" });
+        this.view = {
+            isSelected: isSelected,
+            getTotalFee: getTotalFee,
+            getTotalFeeWithoudDiscounts: getTotalFeeWithoudDiscounts
+        };
     };
     return PaymentMethod;
 }());
 window.onload = function () {
     try {
-        // Parte de los radios
+        // Parte de los radios: Llamadas al DOM para recoger la informacion.
         var inputRadio = document.querySelectorAll("input[type=radio][name='MethodPay']");
         var cardType_1 = document.querySelector('#cardTipe');
-        console.log(inputRadio);
+        // console.log(inputRadio);
         var _loop_1 = function(radio) {
             if (radio.id === "Tarjeta") {
                 cardType_1.addEventListener("change", function () {
@@ -87,9 +109,9 @@ window.onload = function () {
     }
     catch (e) { }
     try {
-        // Parte de los botones
+        // Parte de los botones: A esta informacion se puede acceder atraves de la instancia, y los objetos HTML estan en la propiedad view, pero los cree de igual modo para hacer pruebas.
         var btnTest = document.querySelectorAll("button[name='btn-test']");
-        console.log(btnTest);
+        // console.log(btnTest);
         var _loop_2 = function(btn) {
             btn.addEventListener("click", function () {
                 switch (btn.value) {
@@ -112,5 +134,4 @@ window.onload = function () {
     }
     catch (e) { }
 };
-// Animaciones y parte visual del HTML
 //# sourceMappingURL=app.js.map

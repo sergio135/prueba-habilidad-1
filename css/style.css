@@ -12,6 +12,7 @@ header {
     padding: 20px 0;
     background-color: #141c27;
     color: #ffffff;
+    overflow: hidden;
 }
 main {
     padding: 100px 0;
@@ -22,7 +23,11 @@ main {
     left: 0;
     right: 0;
     background-image: url(../img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     animation-delay: 4s;
+    overflow: hidden;
 }
 footer {
     display: block;
@@ -34,6 +39,7 @@ footer {
     padding: 5px 0;
     background-color: #2e2e2e;
     color: #ffffff;
+    overflow: hidden;
 }
 
 
@@ -85,6 +91,11 @@ main .form-footer {
     font-size: 28px;
     color: #ffffff;
     padding: 20px 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+main .form-footer:hover {
+    background-color: #d68785;
 }
 main .form-area form {
     display: flex;

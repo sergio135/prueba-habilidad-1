@@ -18,6 +18,7 @@ main {
     left: 0;
     right: 0;
     background-image: url(../img/fondo.jpg);
+    animation-delay: 4s;
 }
 footer {
     display: block;

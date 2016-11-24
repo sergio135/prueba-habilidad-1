@@ -5,10 +5,10 @@ header {
     left: 0;
     right: 0;
     height: 100px;
-    background-color: #2e2e2e;
+    padding: 20px 0;
+    background-color: #141c27;
     color: #ffffff;
 }
-
 main {
     padding: 100px 0;
     display: block;
@@ -19,7 +19,6 @@ main {
     right: 0;
     background-image: url(../img/fondo.jpg);
 }
-
 footer {
     display: block;
     position: absolute;
@@ -27,12 +26,37 @@ footer {
     left: 0;
     right: 0;
     height: 50px;
+    padding: 5px 0;
     background-color: #2e2e2e;
     color: #ffffff;
 }
 
 
+/*** Parte Header ***/
+.color-bar {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+.color-bar span {
+    width: 12.5%;
+    height: 6px;
+}
+header .logo-header {
+    height: 60px;
+    animation-duration: 3s;
+    animation-delay: 3.1s;
+}
+header h1 {
+    margin: 10px 0;
+    animation-delay: 4s;
+}
 
+
+/*** Parte Principal ***/
 main .form-area {
     border: 25px solid #2e2e2e;
     border-radius: 20px;
@@ -41,6 +65,7 @@ main .form-area {
     max-width: 800px;
     margin: 0 auto;
     background-color: #ffffff;
+    animation-delay: 4.5s;
 }
 main .form-area form {
     display: flex;
@@ -48,6 +73,21 @@ main .form-area form {
     flex-wrap: nowrap;
     justify-content: space-between;
 }
-main .form-area .form-box{
-    width: 50%;
+main .form-area .form-box-iz {
+    width: 30%;
+    padding-right: 10px;
+}
+main .form-area .form-box-de {
+    width: 70%;
+    padding-left: 10px;
+}
+main .form-area .form-box-iz input {
+    width: 100%;
+}
+
+
+/*** Parte Footer ***/
+footer .logos-rrss img {
+    width: 40px;
+    margin-left: 20px;
 }

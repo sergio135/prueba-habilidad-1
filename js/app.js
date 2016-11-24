@@ -2,30 +2,54 @@
 var es = { brujula: { paymentMethods: {} } };
 // Ahora definimos la clase que utilizara cada instancia de los objetos creados, para los eventos en el DOM sobre metodos de pago.
 var PaymentMethod = (function () {
-    function PaymentMethod(paymentMethodId, price) {
+    function PaymentMethod(paymentMethodId, price, cardType) {
         this.view = {};
         this.discountFee = 10;
         this.paymentMethodId = paymentMethodId;
         this.price = price;
+        this.cardType = cardType;
         this.initView();
     }
     PaymentMethod.prototype.isSelected = function () {
-        return document.querySelector("input[type=radio][name='MethodPay'][id=" + this.paymentMethodId + "]").checked;
+        try {
+            if (this.paymentMethodId === "Tarjeta") {
+                if (this.cardType) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return document.querySelector("input[type=radio][name='MethodPay'][id=" + this.paymentMethodId + "]").checked;
+            }
+        }
+        catch (e) {
+            return false;
+        }
     };
-    ;
     PaymentMethod.prototype.getTotalFee = function () {
         switch (this.paymentMethodId) {
             case "Efectivo": return 1.5 + (this.price - (this.discountFee * this.price / 100));
             case "Paypal": return 8.30 + (this.price - (this.discountFee * this.price / 100));
-            case "Tarjeta": return 6.80 + (this.price - (this.discountFee * this.price / 100));
+            case "Tarjeta":
+                switch (this.cardType) {
+                    case "visa": return 2.80 + (this.price - (this.discountFee * this.price / 100));
+                    case "mastercard": return 3.20 + (this.price - (this.discountFee * this.price / 100));
+                    case "american": return 6.80 + (this.price - (this.discountFee * this.price / 100));
+                }
         }
     };
-    ;
     PaymentMethod.prototype.getTotalFeeWithoudDiscounts = function () {
         switch (this.paymentMethodId) {
             case "Efectivo": return 1.5 + this.price;
             case "Paypal": return 8.30 + this.price;
-            case "Tarjeta": return 6.80 + this.price;
+            case "Tarjeta":
+                switch (this.cardType) {
+                    case "visa": return 2.80 + this.price;
+                    case "mastercard": return 3.20 + this.price;
+                    case "american": return 6.80 + this.price;
+                }
         }
     };
     PaymentMethod.prototype.initView = function () {
@@ -36,13 +60,25 @@ window.onload = function () {
     try {
         // Parte de los radios
         var inputRadio = document.querySelectorAll("input[type=radio][name='MethodPay']");
+        var cardType_1 = document.querySelector('#cardTipe');
         console.log(inputRadio);
         var _loop_1 = function(radio) {
-            radio.addEventListener("change", function () {
-                var price = parseFloat(document.querySelector("input[id='price-input'][type='number']").value);
-                es.brujula.paymentMethods = new PaymentMethod(radio.id, price);
-                console.log(es.brujula.paymentMethods);
-            });
+            if (radio.id === "Tarjeta") {
+                cardType_1.addEventListener("change", function () {
+                    if (radio.checked) {
+                        var price = parseFloat(document.querySelector("input[id='price-input'][type='number']").value);
+                        es.brujula.paymentMethods = new PaymentMethod(radio.id, price, cardType_1.value);
+                        console.log(es.brujula.paymentMethods);
+                    }
+                });
+            }
+            else {
+                radio.addEventListener("change", function () {
+                    var price = parseFloat(document.querySelector("input[id='price-input'][type='number']").value);
+                    es.brujula.paymentMethods = new PaymentMethod(radio.id, price);
+                    console.log(es.brujula.paymentMethods);
+                });
+            }
         };
         for (var _i = 0, inputRadio_1 = inputRadio; _i < inputRadio_1.length; _i++) {
             var radio = inputRadio_1[_i];
@@ -58,15 +94,12 @@ window.onload = function () {
             btn.addEventListener("click", function () {
                 switch (btn.value) {
                     case "isSelected":
-                        console.log('Boton isSelected');
                         console.log(es.brujula.paymentMethods.isSelected());
                         break;
                     case "getTotalFee":
-                        console.log('Boton getTotalFee');
                         console.log(es.brujula.paymentMethods.getTotalFee());
                         break;
                     case "getTotalFeeWithoudDiscounts":
-                        console.log('Boton getTotalFeeWithoudDiscounts');
                         console.log(es.brujula.paymentMethods.getTotalFeeWithoudDiscounts());
                         break;
                 }
@@ -79,5 +112,5 @@ window.onload = function () {
     }
     catch (e) { }
 };
-// Animaciones y parte visual del HTML 
+// Animaciones y parte visual del HTML
 //# sourceMappingURL=app.js.map
